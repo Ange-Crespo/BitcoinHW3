@@ -2,4 +2,5 @@
 
 echo App name :
 read app
-python3 mysite/manage.py startapp $app
+cd mysite
+python3 manage.py startapp $app

@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'landpage',
+    'mainpage',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -57,6 +58,8 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'landpage', 'templates'),
+            os.path.join(BASE_DIR, 'mainpage', 'templates'),
+            os.path.join(BASE_DIR, 'mysite', 'templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -126,4 +129,6 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'landpage', 'static'),
+    os.path.join(BASE_DIR, 'mainpage', 'static'),
+    os.path.join(BASE_DIR, 'mysite', 'static'),
 ]
