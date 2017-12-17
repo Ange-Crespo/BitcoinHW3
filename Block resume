@@ -1,0 +1,8 @@
+Blocks : 
+
+	buyAndSell
+	
+	titleCurrencie
+		titleCurrencieBaseSymbol
+		titleCurrencieSymbol
+		titleCurrencieName

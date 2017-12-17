@@ -38,6 +38,7 @@
                         <li class="selected"><a href="index.html"><i class="fa fa-bullseye"></i> Exchange</a></li>
                         <li><a href="portfolio.html"><i class="fa fa-tasks"></i> Funds</a></li>
                         <!--BEGIN Buy and SELL-->
+                        {% block BuyAndSell %}
                         <li>
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
@@ -127,6 +128,7 @@
                                 </div>
                             </div>
                         </li>
+                        {% endblock %}
                         <!--End Buy and SELL-->
                     </ul>
                     
@@ -174,8 +176,10 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <!--Begin TitleCurrencie-->	
+
+                        {% titleCurrencie %}
                         <div class="dropdown">
-                        <h1 class = "dropdown-toggle" data-toggle="dropdown">Bitcoin/$ <small>Price of the currency in $</small><b class="caret"></b></h1>
+                        <h1 class = "dropdown-toggle" data-toggle="dropdown">{% block titleCurrencieSymbol %}{% endblock %}/{% block titleCurrencieBaseSymbol %}${% endblock %} <small>Price of{% block titleCurrencieName %}{% endblock %} in {% bloc titleCurrencieBaseName%}{% endblock %}</small><b class="caret"></b></h1>
                             <ul class="dropdown-menu">
                                 <li class="dropdown-header">Crypto-currencies</li>
                                 <li><a href="#"><i class="fa fa-user"></i> Bitcoin</a></li>
@@ -187,20 +191,25 @@
                                 <li><a href="#"><i class="fa fa-power-off"></i> ETH</a></li>
                             </ul>
                         </div>
+                        {% endblock %}
                         <!--End Title Currencie-->
                         <!--Begin alert-->
+                        {% block alert %}
                         <div class="alert alert-dismissable alert-warning">
                             <button data-dismiss="alert" class="close" type="button">&times;</button>
-                            Feel free to Trade here !
+                            {% block alertText %}Feel free to Trade here !{% endblock %}
                             <br />  
                         </div>
+                        {% endblock %}
                         <!--End alert -->
                     </div>
                 </div>
                 <div class="row">
                     
                     <div class="col-md-4">
+                        
                         <!--Begin Tickers-->
+                        {% block tickers %}
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="fa fa-rss"></i> Tickers</h3>
@@ -209,26 +218,30 @@
                                 <div id="shieldui-grid1"></div>
                             </div>
                         </div>
+                        {% endblock %}
                          <!--End Tickers-->
                     </div>
                    
                     
                     <div class="col-md-8">
                         <!--Begin Chart Prices-->
+                        {% block chart %}
                         <div class="panel panel-primary">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Bitcoin</h3>
+                                <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i>{% block chartCurencieName %} {% endblock %}/{% charBaseName %}{% endblock %}</h3>
                             </div>
                             <div class="panel-body">
                                 <div id="shieldui-chart1"></div>
                             </div>
                         </div>
+                        {% endblock %}
                         <!--End Chart Prices-->
                     </div>    
                 </div>
                 <div class="row">
                     <div class="col-lg-6">
                         <!--Begin Chart Table Ordre Buy-->
+                        {% block orderBuy %}
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> <small>Orders</small> BUY</h3>
@@ -316,10 +329,12 @@
                                 </div>    
                             </div>
                         </div>
+                        {% endblock %}
                         <!--End Chart Price Buy-->
                     </div>
                     <div class="col-lg-6">
                         <!--Begin Chart Price Sell-->
+                        {% block orderBuy %}
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> <small>Orders</small> SELL</h3>
@@ -402,6 +417,7 @@
                                 </div>    
                             </div>
                         </div>
+                        {% endblock %}
                         <!--End Chart Price Sell-->
                     </div>
                 </div>
