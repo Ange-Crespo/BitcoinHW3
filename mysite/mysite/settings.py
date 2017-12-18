@@ -31,6 +31,13 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'alert',
+    'buyAndSell',
+    'Chart',
+    'orderBuy',
+    'orderSell',
+    'orderTrade',
+    'tickers',
     'landpage',
     'mainpage',
     'django.contrib.admin',
@@ -57,6 +64,14 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
+            os.path.join(BASE_DIR, 'alert', 'templates'),
+            os.path.join(BASE_DIR, 'Chart', 'templates'),
+            os.path.join(BASE_DIR, 'buyAndSell', 'templates'),
+            os.path.join(BASE_DIR, 'orderBuy', 'templates'),
+            os.path.join(BASE_DIR, 'orderSell', 'templates'),
+            os.path.join(BASE_DIR, 'orderTrade', 'templates'),
+            os.path.join(BASE_DIR, 'tickers', 'templates'),
+            os.path.join(BASE_DIR, 'titleCurrencie', 'templates'),
             os.path.join(BASE_DIR, 'landpage', 'templates'),
             os.path.join(BASE_DIR, 'mainpage', 'templates'),
             os.path.join(BASE_DIR, 'mysite', 'templates'),

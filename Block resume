@@ -6,3 +6,23 @@ Blocks :
 		titleCurrencieBaseSymbol
 		titleCurrencieSymbol
 		titleCurrencieName
+	
+	alert
+		alertText
+	
+	tickers
+	
+	chart
+		chartCurencieName
+		chartBaseName
+	
+	orderBuy
+	
+	orderSell
+	
+	orderTrade
+	
+	Chain order : mainpage->titleCurrencie->Tickers->orderTrade->orderSell->orderBuy->buyAndSell->alert->chart->mysite
+
+	The main page collect all the template and populate them. Not sure of that :/
+	

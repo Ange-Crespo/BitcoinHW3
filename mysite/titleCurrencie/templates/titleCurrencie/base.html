@@ -1,0 +1,18 @@
+{% extends 'tickers/base.html' %}
+{% block titleCurrencie %}
+
+        <div class="dropdown">
+        <h1 class = "dropdown-toggle" data-toggle="dropdown">{% block titleCurrencieSymbol %}{% endblock %}/{% block titleCurrencieBaseSymbol %}${% endblock %} <small>Price of{% block titleCurrencieName %}{% endblock %} in {% block titleCurrencieBaseName%}{% endblock %}</small><b class="caret"></b></h1>
+            <ul class="dropdown-menu">
+                <li class="dropdown-header">Crypto-currencies</li>
+                <li><a href="#"><i class="fa fa-user"></i> Bitcoin</a></li>
+                <li><a href="#"><i class="fa fa-gear"></i> ETH</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Compare with</li>
+                <li><a href="#"><i class="fa fa-power-off"></i> USD</a></li>
+                <li><a href="#"><i class="fa fa-power-off"></i> BTC</a></li>
+                <li><a href="#"><i class="fa fa-power-off"></i> ETH</a></li>
+            </ul>
+        </div>
+
+{% endblock %}
