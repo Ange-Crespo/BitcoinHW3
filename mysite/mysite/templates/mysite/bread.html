@@ -31,15 +31,24 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">Paul Matcartney</a>
+                    <a class="navbar-brand" href="index.html">LOGO</a>
                 </div>
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul id="active" class="nav navbar-nav side-nav">
                         <li class="selected"><a href="index.html"><i class="fa fa-bullseye"></i> Exchange</a></li>
                         <li><a href="portfolio.html"><i class="fa fa-tasks"></i> Funds</a></li>
                         <!--BEGIN Buy and SELL-->
-                        {% block buyAndSell %}{% endblock %}
+
+                        <li>{% block buyAndSell %}{% endblock %}</li>
                         <!--End Buy and SELL-->
+                        <li>
+
+                        <!--Begin Tickers-->
+                        {% block tickers %}
+                        
+                        {% endblock %}
+                         <!--End Tickers-->
+                        </li>
                     </ul>
                     
                     
@@ -100,17 +109,10 @@
                 </div>
                 <div class="row">
                     
-                    <div class="col-md-4">
-                        
-                        <!--Begin Tickers-->
-                        {% block tickers %}
-                        
-                        {% endblock %}
-                         <!--End Tickers-->
-                    </div>
+                    
                    
                     
-                    <div class="col-md-8">
+                    <div class="col-md-12">
                         <!--Begin Chart Prices-->
                         {% block chart %}
                         
@@ -144,80 +146,16 @@
             </div>
         </div>
         <!-- /#wrapper -->
-    
-        <script type="text/javascript">
-            jQuery(function ($) {
-                var performance = [12, 43, 34, 22, 12, 33, 4, 17, 22, 34, 54, 67],
-                    visits = [123, 323, 443, 32],
-                    traffic = [
-                    {
-                        Source: "Direct", Amount: 323, Change: 53, Percent: 23, Target: 600
-                    },
-                    {
-                        Source: "Refer", Amount: 345, Change: 34, Percent: 45, Target: 567
-                    },
-                    {
-                        Source: "Social", Amount: 567, Change: 67, Percent: 23, Target: 456
-                    },
-                    {
-                        Source: "Search", Amount: 234, Change: 23, Percent: 56, Target: 890
-                    },
-                    {
-                        Source: "Internal", Amount: 111, Change: 78, Percent: 12, Target: 345
-                    }];
-    
-    
-                $("#shieldui-chart1").shieldChart({
-                    theme: "dark",
-    
-                    primaryHeader: {
-                        text: "Bitcoin in $"
-                    },
-                    exportOptions: {
-                        image: false,
-                        print: false
-                    },
-                    dataSeries: [{
-                        seriesType: "area",
-                        collectionAlias: "Time",
-                        data: performance
-                    }]
-                });
-    
-                $("#shieldui-chart2").shieldChart({
-                    theme: "dark",
-                    primaryHeader: {
-                        text: "Traffic Per week"
-                    },
-                    exportOptions: {
-                        image: false,
-                        print: false
-                    },
-                    dataSeries: [{
-                        seriesType: "pie",
-                        collectionAlias: "traffic",
-                        data: visits
-                    }]
-                });
-    
-                $("#shieldui-grid1").shieldGrid({
-                    dataSource: {
-                        data: traffic
-                    },
-                    sorting: {
-                        multiple: true
-                    },
-                    rowHover: true,
-                    paging: true,
-                    columns: [
-                    { field: "Source", width: "25px", title: "<small>Sym</small>" },
-                    { field: "Amount", title: "Last" },                
-                    { field: "Percent", title: "24H", format: "{0} %" },
-                    { field: "Target", title: "Volume" },
-                    ]
-                });            
-            });        
-        </script>
     </body>
+    <script>
+        $( document ).ready($("#alert_Base").load('{% url "alert:content" %}'));
+        $( document ).ready($("#buyAndSell_Base").load('{% url "buyAndSell:content" %}'));
+        $( document ).ready($("#Chart_Base").load('{% url "Chart:content" %}'));
+        $( document ).ready($("#orderBuy_Base").load('{% url "orderBuy:content" %}'));
+        $( document ).ready($("#orderSell_Base").load('{% url "orderSell:content" %}'));
+        $( document ).ready($("#orderTrade_Base").load('{% url "orderTrade:content" %}'));
+        $( document ).ready($("#tickers_Base").load('{% url "tickers:content" %}'));
+        $( document ).ready($("#titleCurrencie_Base").load('{% url "titleCurrencie:content" %}'));
+    </script>
     </html>
     
