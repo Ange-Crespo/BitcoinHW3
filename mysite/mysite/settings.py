@@ -30,6 +30,7 @@ ALLOWED_HOSTS = ["bithundi.com","www.bithundi.com","localhost"]
 # Application definition
 
 INSTALLED_APPS = [
+    'user',
     'alert',
     'buyAndSell',
     'Chart',
@@ -63,6 +64,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
+            os.path.join(BASE_DIR, 'user', 'templates'),
             os.path.join(BASE_DIR, 'alert', 'templates'),
             os.path.join(BASE_DIR, 'Chart', 'templates'),
             os.path.join(BASE_DIR, 'buyAndSell', 'templates'),
@@ -142,6 +144,7 @@ STATIC_ROOT = "/var/www/KapleX/static/"
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'user', 'static'),
     os.path.join(BASE_DIR, 'landpage', 'static'),
     os.path.join(BASE_DIR, 'mainpage', 'static'),
     os.path.join(BASE_DIR, 'mysite', 'static'),
