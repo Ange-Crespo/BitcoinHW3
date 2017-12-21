@@ -15,7 +15,11 @@ def register(request):
         password = request.POST.get('password')
         user = User.objects.create_user(username, '', password)
         user = auth.authenticate(username=username, password=password)
-        return HttpResponseRedirect('/user')
+        if user is not None and user.is_active:
+            auth.login(request, user)
+            return HttpResponseRedirect('/user')
+        else:
+            return HttpResponseRedirect('/user/login')
     else:
         return render(request, 'user/register.html')
 

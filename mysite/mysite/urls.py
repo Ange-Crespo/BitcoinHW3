@@ -17,6 +17,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
+    url(r'^$',include('mainpage.urls')),
     url(r'^alert/',include('alert.urls')),
     url(r'^buyAndSell/',include('buyAndSell.urls')),
     url(r'^Chart/',include('Chart.urls')),
