@@ -27,5 +27,6 @@ urlpatterns = [
     url(r'^titleCurrencie/',include('titleCurrencie.urls')),
     url(r'^mainpage/',include('mainpage.urls')),
     url(r'^landpage/', include('landpage.urls')),
+    url(r'^user/', include('user.urls')),
     url(r'^admin/', admin.site.urls),
 ]
