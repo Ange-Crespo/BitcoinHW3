@@ -1,0 +1,68 @@
+{% extends "user/base.html" %}
+
+{% block title %} Register {% endblock %}
+
+{% block body %}
+{{ block.super }}
+<div id="register">
+    <form action="{% url "user:register" %}" method="POST">
+        {% csrf_token %}
+        <div class="row text-center">
+            <h2>New User</h2>
+        </div>
+        <div class="row">
+            <label for="firstname" class="col-md-2">
+                Username:
+            </label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" id="username" name="username" placeholder="Username for login" required>
+            </div>
+            <div class="col-md-1">
+                <i class="fa fa-lock fa-2x"></i>
+            </div>
+        </div>
+        <div class="row">
+            <label for="firstname" class="col-md-2">
+                Email:
+            </label>
+            <div class="col-md-9">
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email for further contact" required>
+            </div>
+            <div class="col-md-1">
+                <i class="fa fa-lock fa-2x"></i>
+            </div>
+        </div>
+        <div class="row">
+            <label for="password" class="col-md-2">
+                Password:
+            </label>
+            <div class="col-md-9">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required>
+                <p class="help-block">
+                    Min: 6 characters (Alphanumeric only)
+                </p>
+            </div>
+            <div class="col-md-1">
+                <i class="fa fa-lock fa-2x"></i>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-10">
+                <label>
+                    <input type="checkbox" required> I hereby accept the terms and conditions for using this site</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-10">
+                <button type="submit" class="btn btn-info">
+                    Register
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

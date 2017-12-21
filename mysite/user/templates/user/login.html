@@ -1,0 +1,52 @@
+{% extends "user/base.html" %}
+
+{% block title %} Login {% endblock %}
+
+{% block body %}
+{{ block.super }}
+<form action="" method="post">
+    {% csrf_token %}
+    <div class="row text-center">
+        <h2>Login User</h2>
+    </div>
+    <div class="row">
+        <label for="firstname" class="col-md-2">
+            Username:
+        </label>
+        <div class="col-md-9">
+            <input type="text" class="form-control" id="username" name="username" placeholder="Username for login" required>
+        </div>
+        <div class="col-md-1">
+            <i class="fa fa-lock fa-2x"></i>
+        </div>
+    </div>
+    <div class="row">
+        <label for="password" class="col-md-2">
+            Password:
+        </label>
+        <div class="col-md-9">
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required>
+        </div>
+        <div class="col-md-1">
+            <i class="fa fa-lock fa-2x"></i>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-10">
+            <label>
+                <input type="checkbox"> Remember Login Info</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-10">
+            <button type="submit" class="btn btn-info">
+                Login
+            </button>
+        </div>
+    </div>
+</form>
+{% endblock %}

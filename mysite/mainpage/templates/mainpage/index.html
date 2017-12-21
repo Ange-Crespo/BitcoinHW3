@@ -1,0 +1,50 @@
+{% extends "mysite/base.html" %}
+
+{% block title %} MainPage {% endblock %}
+
+{% block nav %}
+{{ block.super }}
+<li class="selected">
+    <a href="index.html">
+        <i class="fa fa-bullseye"></i> Exchange</a>
+</li>
+<li>
+    <a href="portfolio.html">
+        <i class="fa fa-tasks"></i> Funds</a>
+</li>
+<li>
+{% include "buyAndSell/block.html" %}
+</li>
+<li>
+{% include "tickers/block.html" %}
+</li>
+{% endblock %}
+
+{% block status %}
+{{ block.super }}
+{% include "mainpage/status.html" %}
+{% endblock %}
+
+{% block body %}
+{{ block.super }}
+<div class="row">
+    {% include "alert/block.html" %}
+</div>
+<div class="row">
+    {% include "titleCurrencie/block.html" %}
+</div>
+<div class="row">
+    {% include "Chart/block.html" %}
+</div>
+<div class="row">
+    <div class="col-lg-4">
+        {% include "orderSell/block.html" %}
+    </div>
+    <div class="col-lg-4">
+        {% include "orderBuy/block.html" %}
+    </div>
+    <div class="col-lg-4">
+        {% include "orderTrade/block.html" %}
+    </div>
+</div>
+{% endblock %}
