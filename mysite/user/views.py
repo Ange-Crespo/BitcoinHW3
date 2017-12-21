@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
+from django.contrib.auth.models import User
 from django.contrib import auth
 from django.http import HttpResponse, HttpResponseRedirect
 # Create your views here.
@@ -10,7 +11,11 @@ def index(request):
 
 def register(request):
     if request.method == "POST":
-        return HttpResponse('POST')
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = User.objects.create_user(username, '', password)
+        user = auth.authenticate(username=username, password=password)
+        return HttpResponseRedirect('/user')
     else:
         return render(request, 'user/register.html')
 
