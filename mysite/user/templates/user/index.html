@@ -9,11 +9,7 @@
 </head>
 
 <body>
-  {% if request.user.is_authenticated %}
-  <a href="{% url "user:logout" %}">Logout</a>
-  {% else %}
-  <a href="{% url "user:login" %}">Login</a>
-  {% endif %}
+  <a href="/">Go to Dashboard</a>
 </body>
 
 </html>
