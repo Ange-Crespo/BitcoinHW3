@@ -8,6 +8,7 @@ $.ajaxSetup({
     beforeSend: function(xhr, settings) {
         if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
             xhr.setRequestHeader("X-CSRFToken", getCSRFTokenValue());
+            console.log(getCSRFTokenValue());
         }
     }
 });
@@ -43,8 +44,8 @@ function csrfSafeMethod(method) {
         }
         });
         };
-        var comd="bid"
-;       $('#bid').mouseover(function(event){
+        var comd="bid";       
+        $('#bid').mouseover(function(event){
 
             comd="bid";
             console.log("cmd : "+comd);
