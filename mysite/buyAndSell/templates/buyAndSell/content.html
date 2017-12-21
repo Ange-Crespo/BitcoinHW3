@@ -1,12 +1,11 @@
-{% load static %}
 
-<div id="URL_buyAndSellForm" style="visibility:hidden" value='{% url "buyAndSell:create_post" %}'>{% url "buyAndSell:create_post" %}</div>
-    <div class="panel panel-primary">
+{% load static %}
+<div class="panel panel-primary">
         <div class="panel-heading">
             <i class="fa fa-bar-chart-o fa-fw"></i>
             <div class="pull-right">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                    <button type="button" style="display:none" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
                         Actions
                         <span class="caret"></span>
                     </button>

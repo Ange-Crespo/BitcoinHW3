@@ -50,9 +50,9 @@ def create_post(request):
         print(cmd)
         response_data = {}
         os.system("pwd && cd ../scripts && pwd && ./book "+cmd+" "+price+" "+amount)
-        #&& cd ../script && book > "+ cmd +" "+price+" "+amount)
-
-        
+        os.system("pwd && cd ../scripts && pwd && ./book match")
+        os.system("pwd && cd ../scripts && pwd && ./book list > ../json/bid_ask.json")
+        ##UPDATE PRICE FOR THE CHART AND TICKER IN DB AND VIEW
         return HttpResponse(
             json.dumps(response_data),
             content_type="application/json"
