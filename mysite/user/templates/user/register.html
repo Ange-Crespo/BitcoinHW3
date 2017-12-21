@@ -1,53 +1,57 @@
-{% extends 'mysite/bread.html' %}
-{% block chart %}
-  <div id="register">
+{% extends "mysite/base.html" %}
+
+{% block title %} Register {% endblock %}
+
+{% block body %}
+{{ block.super }}
+<div id="register">
     <form action="{% url "user:register" %}" method="POST">
-      {% csrf_token %}
-      <div class="row text-center">
-        <h2>New User</h2>
-      </div>
-      <div>
-        <label for="firstname" class="col-md-2">
-          Username:
-        </label>
-        <div class="col-md-9">
-          <input type="text" class="form-control" id="username" name="username" placeholder="Username for login" required>
+        {% csrf_token %}
+        <div class="row text-center">
+            <h2>New User</h2>
         </div>
-        <div class="col-md-1">
-          <i class="fa fa-lock fa-2x"></i>
+        <div>
+            <label for="firstname" class="col-md-2">
+                Username:
+            </label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" id="username" name="username" placeholder="Username for login" required>
+            </div>
+            <div class="col-md-1">
+                <i class="fa fa-lock fa-2x"></i>
+            </div>
         </div>
-      </div>
-      <div>
-        <label for="password" class="col-md-2">
-          Password:
-        </label>
-        <div class="col-md-9">
-          <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required>
-          <p class="help-block">
-            Min: 6 characters (Alphanumeric only)
-          </p>
+        <div>
+            <label for="password" class="col-md-2">
+                Password:
+            </label>
+            <div class="col-md-9">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required>
+                <p class="help-block">
+                    Min: 6 characters (Alphanumeric only)
+                </p>
+            </div>
+            <div class="col-md-1">
+                <i class="fa fa-lock fa-2x"></i>
+            </div>
         </div>
-        <div class="col-md-1">
-          <i class="fa fa-lock fa-2x"></i>
+        <div>
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-10">
+                <label>
+                    <input type="checkbox" required> I hereby accept the terms and conditions for using this site</label>
+            </div>
         </div>
-      </div>
-      <div>
-        <div class="col-md-2">
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-10">
+                <button type="submit" class="btn btn-info">
+                    Register
+                </button>
+            </div>
         </div>
-        <div class="col-md-10">
-          <label>
-            <input type="checkbox" required> I hereby accept the terms and conditions for using this site</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2">
-        </div>
-        <div class="col-md-10">
-          <button type="submit" class="btn btn-info">
-            Register
-          </button>
-        </div>
-      </div>
     </form>
-  </div>
+</div>
 {% endblock %}
