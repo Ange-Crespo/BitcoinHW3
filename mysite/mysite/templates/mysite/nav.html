@@ -1,0 +1,18 @@
+<ul id="active" class="nav navbar-nav side-nav">
+    <li class="selected">
+        <a href="index.html">
+            <i class="fa fa-bullseye"></i> Exchange</a>
+    </li>
+    <li>
+        <a href="portfolio.html">
+            <i class="fa fa-tasks"></i> Funds</a>
+    </li>
+    <!--BEGIN Buy and SELL-->
+    <li>{% block buyAndSell %}{% endblock %}</li>
+    <!--End Buy and SELL-->
+    <li>
+        <!--Begin Tickers-->
+        {% block tickers %} {% endblock %}
+        <!--End Tickers-->
+    </li>
+</ul>
