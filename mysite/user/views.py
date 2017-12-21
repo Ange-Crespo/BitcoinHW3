@@ -12,8 +12,11 @@ def index(request):
 def register(request):
     if request.method == "POST":
         username = request.POST.get('username')
+        email = request.POST.get('email')
         password = request.POST.get('password')
         user = User.objects.create_user(username, '', password)
+        user.email = email
+        user.save()
         user = auth.authenticate(username=username, password=password)
         if user is not None and user.is_active:
             auth.login(request, user)
