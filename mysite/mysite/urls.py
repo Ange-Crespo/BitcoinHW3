@@ -17,7 +17,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^$',include('mainpage.urls')),
+    url(r'^',include('mainpage.urls')),
     url(r'^alert/',include('alert.urls')),
     url(r'^buyAndSell/',include('buyAndSell.urls')),
     url(r'^Chart/',include('Chart.urls')),
@@ -26,7 +26,6 @@ urlpatterns = [
     url(r'^orderTrade/',include('orderTrade.urls')),
     url(r'^tickers/',include('tickers.urls')),
     url(r'^titleCurrencie/',include('titleCurrencie.urls')),
-    url(r'^mainpage/',include('mainpage.urls')),
     url(r'^landpage/', include('landpage.urls')),
     url(r'^user/', include('user.urls')),
     url(r'^admin/', admin.site.urls),
