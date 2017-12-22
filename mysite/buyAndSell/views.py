@@ -48,9 +48,11 @@ def create_post(request):
         price = request.POST.get('price')
         cmd = request.POST.get('cmd')
         print(cmd)
+        print(request.user.username)
         response_data = {}
-        os.system("pwd && cd ../scripts && pwd && ./book "+cmd+" "+price+" "+amount)
+        os.system("pwd && cd ../scripts && pwd && ./book "+cmd+" "+"test"+" "+price+" "+amount)
         os.system("pwd && cd ../scripts && pwd && ./book match")
+        os.system("pwd && cd ../scripts && pwd && ./book history 0 -1 > ../json/history.json")
         os.system("pwd && cd ../scripts && pwd && ./book list > ../json/bid_ask.json")
         ##UPDATE PRICE FOR THE CHART AND TICKER IN DB AND VIEW
         return HttpResponse(

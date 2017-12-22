@@ -1,7 +1,5 @@
-{% load static %}
 
-<div id="buyAndSell_Base">
-    <div class="panel panel-primary">
+<div class="panel panel-primary">
         <div class="panel-heading">
             <i class="fa fa-bar-chart-o fa-fw"></i>
             <div class="pull-right">
@@ -11,19 +9,15 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu pull-right" role="menu">
-                        <li>
-                            <a href="#">Select</a>
+                        <li><a href="#">Select</a>
                         </li>
-                        <li>
-                            <a href="#">Exchange</a>
+                        <li><a href="#">Exchange</a>
                         </li>
-                        <li>
-                            <a href="#">Margin</a>
+                        <li><a href="#">Margin</a>
                         </li>
                         <li class="divider"></li>
                         <li class="dropdown-header">Tools</li>
-                        <li>
-                            <a href="#">Calcul</a>
+                        <li><a href="#">Calcul</a>
                         </li>
                     </ul>
                 </div>
@@ -31,76 +25,132 @@
         </div>
 
         <div class="panel-body">
-            <div class="row">
-                <form role="form" id="form1">
+            <form role="form" id = "form1" method="post">   
+                <div class="row">
+                        {% csrf_token %}
                     <div class="col-xs-6">
                         <div class="form-group">
                             <label></label>
-                            {% csrf_token %}
-                            <input class="input-sm form-control" name="Limit" placeholder="Limit">
-                            <datalist id="Limit">
-                                <option value="Internet Explorer">
-                                    <option value="Firefox">
-                                        <option value="Google Chrome">
-                                            <option value="Opera">
-                                                <option value="Safari">
-                            </datalist>
+                            <input id="Limit" type="number" class="input-sm form-control" name ="Limit" placeholder="Limit">
+
+                            <!--<p class="help-block">Example block-level help text here.</p-->
+                        </div>	
+                    </div>
+                    <div class="col-xs-6" style ="border : 0px;">
+                                    <label>
+                                        <input id="isOCO" type="checkbox">
+                                            <small>OCO</small>
+                                    </label>
+                                    <label>
+                                        <input id="isPostOnly" type="checkbox">
+                                            <small>Post only</small>
+                                    </label>
+                                
+                                    <label>
+                                        <input id="isHidden" type="checkbox">
+                                            <small>Hidden</small>
+                                    </label>	
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <label><small>Price USD</small></label>
+                            <input id="price" type="number" name="Price" class="input-sm form-control">
                             <!--<p class="help-block">Example block-level help text here.</p-->
                         </div>
                     </div>
-                    <div class="col-xs-6" style="border : 0px;">
-                        <label>
-                            <input type="checkbox">
-                            <small>OCO</small>
-                        </label>
-                        <label>
-                            <input type="checkbox">
-                            <small>Post only</small>
-                        </label>
-
-                        <label>
-                            <input type="checkbox">
-                            <small>Hidden</small>
-                        </label>
-                    </div>
-                </form>
-            </div>
-            <div class="row">
-                <div class="col-xs-6">
-                    <div class="form-group">
-                        <label>
-                            <small>Price USD</small>
-                        </label>
-                        <input id="price" class="input-sm form-control">
-                        <!--<p class="help-block">Example block-level help text here.</p-->
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                                
+                                    <label><small>Amount BTC</small></label>
+                                    <input  id="amount" type="number" name="Amount" class=" input-sm form-control">
+                                    <!--<p class="help-block">Example block-level help text here.</p-->
+                        </div>	
                     </div>
                 </div>
-                <div class="col-xs-6">
-                    <div class="form-group">
-                        <label>
-                            <small>Amount BTC</small>
-                        </label>
-                        <input id="amount" class=" input-sm form-control">
-                        <!--<p class="help-block">Example block-level help text here.</p-->
-                    </div>
-                </div>
-            </div>
+            </form>
         </div>
-        <div class="panel-footer">
+        <div class = "panel-footer">
             <div class="row">
                 <div class="col-sm-6">
-                    <button id="bid" form="form1" type="submit" class="btn-sm btn-default">
-                        <small>Exchange buy</small>
-                    </button>
+                    <button  form="form1" type="submit" class="btn-sm btn-default" id="ask" value="buy"><small>Exchange buy</small></button>
                 </div>
                 <div class="col-sm-6">
-                    <button id="ask" form="form1" type="submit" class="btn-sm btn-default">
-                        <small>Exchange Sell</small>
-                    </button>
+                    <button  form="form1" type="submit" class="btn-sm btn-default" id="bid" value="sell"><small>Exchange Sell</small></button>
                 </div>
             </div>
         </div>
     </div>
-
-</div>
-<script type="text/javascript" src="{% static "buyAndSell/js/main.js" %}"></script>
+   
+    
+    <script>
+    //REQUIRE JQUERY !
+    function getCSRFTokenValue() {
+        var key= jQuery("[name=csrfmiddlewaretoken]").val();
+        console.log( "CSRF COOKIE from buyAndSell/main.js :" +key);
+        return key;
+    };
+    
+    function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    };
+        function create_post(comd) {
+            $.ajaxSetup({
+                beforeSend: function(xhr, settings) {
+                console.log(!csrfSafeMethod(settings.type) && !this.crossDomain);
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader("X-CSRFToken", getCSRFTokenValue());
+                        console.log("we are in");
+                    }
+                }
+            });
+        console.log("create post is working!") // sanity check
+        console.log(window.location.origin+"/buyAndSell/create_post/");
+        $.ajax({
+            url : window.location.origin+"/buyAndSell/create_post/", // the endpoint
+            type : "POST", // http method
+            data : { limit: $('#Limit').val(), price : $('#price').val(), amount :$('#amount').val(),cmd : comd}, // data sent with the post request
+    
+            // handle a successful response
+            success : function(json) {
+                $('#Limit').val(''); // remove the value from the input
+                $('#price').val('');
+                $('#amount').val('');
+                
+                console.log(json); // log the returned json to the console
+                console.log("success"); // another sanity check
+                
+                console.log('http://{domain}'+$('#URL_buyAndSellForm').val());
+            },
+    
+            // handle a non-successful response
+            error : function(xhr,errmsg,err) {
+                $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+                    " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+                console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+                console.log(getCSRFTokenValue());
+            }
+            });
+            };
+            var comd="bid";       
+            $('#bid').mouseover(function(event){
+    
+                comd="ask";
+                console.log("cmd : "+comd);
+            });
+    
+            $('#ask').mouseover(function(event){
+                
+                comd="bid";
+                console.log("cmd : "+comd);
+            });
+            $('#form1').on('submit', function(event){
+            event.preventDefault();
+            console.log("form submitted!")  // sanity check
+            console.log(comd);
+            create_post(comd);
+            });
+    
+        </script>    

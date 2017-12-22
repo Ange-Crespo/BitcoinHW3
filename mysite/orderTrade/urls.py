@@ -7,5 +7,6 @@ from django.views.generic import TemplateView
 
 app_name = 'orderTrade'
 urlpatterns = [   
-    url(r'^content/$', views.content, name='content'), 
+    url(r'^json/$', views.takeJSON, name='takeJSON'), 
+    url(r'^block/$', views.block, name='block'),
 ]
