@@ -1,8 +1,10 @@
 {% extends "user/base.html" %}
 
-{% block title %} Setting {% endblock %}
+{% block title %} Profile {% endblock %}
 
 {% block body %}
 {{ block.super }}
+{% include "user/withdraw.html" %}
+{% include "user/deposit.html" %}
 <a href="/">Go to Dashboard</a>
 {% endblock %}

@@ -1,0 +1,34 @@
+<form action="{% url "user:register" %}" method="POST">
+    {% csrf_token %}
+    <div class="row text-center">
+        <h2>Withdraw</h2>
+    </div>
+    <div class="row">
+        <label for="address" class="col-md-2">
+            Address:
+        </label>
+        <div class="col-md-9">
+            <input type="text" class="form-control" id="address" name="address" placeholder="Address" required>
+        </div>
+        <div class="col-md-1">
+            <i class="fa fa-lock fa-2x"></i>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-10">
+            <label>
+                <input type="checkbox" required> I hereby accept the terms and conditions for using this site</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-10">
+            <button type="submit" class="btn btn-info">
+                Withdraw
+            </button>
+        </div>
+    </div>
+</form>
