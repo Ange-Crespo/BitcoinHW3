@@ -7,5 +7,5 @@ from django.views.generic import TemplateView
 
 app_name = 'tickers'
 urlpatterns = [   
-    url(r'^content/$', views.content, name='content'), 
+    url(r'^$', views.index, name='index'),
 ]

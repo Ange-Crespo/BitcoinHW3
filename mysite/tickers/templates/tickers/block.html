@@ -4,47 +4,45 @@
             <i class="fa fa-rss"></i> Tickers</h3>
     </div>
     <div class="panel-body">
-        <div id="shieldui-grid1"></div>
+        <div id="ticker-chart"></div>
     </div>
 </div>
 
 <script>
-    jQuery(function ($) {
-        var performance = [12, 43, 34, 22, 12, 33, 4, 17, 22, 34, 54, 67],
-            visits = [123, 323, 443, 32],
-            traffic = [
-                {
-                    Source: "Direct", Amount: 323, Change: 53, Percent: 23, Target: 600
-                },
-                {
-                    Source: "Refer", Amount: 345, Change: 34, Percent: 45, Target: 567
-                },
-                {
-                    Source: "Social", Amount: 567, Change: 67, Percent: 23, Target: 456
-                },
-                {
-                    Source: "Search", Amount: 234, Change: 23, Percent: 56, Target: 890
-                },
-                {
-                    Source: "Internal", Amount: 111, Change: 78, Percent: 12, Target: 345
-                }];
-        $("#shieldui-grid1").shieldGrid({
-            dataSource: {
-                data: traffic
-            },
-            sorting: {
-                multiple: true
-            },
-            rowHover: true,
-            paging: true,
-            columns: [
-                { field: "Source", width: "25px", title: "<small>Sym</small>" },
-                { field: "Amount", title: "Last" },
-                { field: "Percent", title: "24H", format: "{0} %" },
-                { field: "Target", title: "Volume" },
-            ]
-        });
+    $(function() {
+        const drawChart = (result) => {
+            if (result.code === 200) {
+                $("#ticker-chart").shieldGrid({
+                    dataSource: {
+                        data: result.data
+                    },
+                    sorting: {
+                        multiple: true
+                    },
+                    rowHover: true,
+                    paging: false,
+                    columns: [
+                        { field: "symbol", width: "50px", title: "<small>Sym</small>" },
+                        { field: "last", title: "Last" },
+                        { field: "percent", title: "24H", format: "{0}%" },
+                        { field: "volume", title: "Volume" },
+                    ]
+                });
+            }
+        }
+        const refreshGird = (result) => {
+            if (result.code === 200) {
+                const grid = $("#ticker-chart").swidget();
+                const initialOptions = grid.initialOptions;
+                initialOptions.dataSource = {
+                    data: result.data 
+                };
+                grid.refresh(initialOptions);
+            }
+        }
+        const getData = (callback) => $.get("{% url "tickers:index" %}", callback)
 
-
-    });
+        setInterval(getData, 1000 * 60, refreshGird)
+        getData(drawChart)
+    })
 </script>
