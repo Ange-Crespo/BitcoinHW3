@@ -12,4 +12,5 @@ def content(request):
     #} 
     #return render(request, 'currencies/coin.html', context)
     #######################################################################
-    return render(request, 'orderBuy/content.html')
+    return render(request, 'orderBuy/block.html')
+

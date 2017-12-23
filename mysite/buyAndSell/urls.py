@@ -7,5 +7,6 @@ from django.views.generic import TemplateView
 
 app_name = 'buyAndSell'
 urlpatterns = [   
-    url(r'^content/$', views.content, name='content'), 
+    url(r'^content/$', views.content, name='content'),
+    url(r'^create_post/$', views.create_post, name='create_post'), 
 ]
