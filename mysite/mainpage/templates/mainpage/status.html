@@ -19,7 +19,7 @@
 </li>
 <li class="dropdown user-dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-        <i class="fa fa-user"></i> Paul
+        <i class="fa fa-user"></i> {{ user.username }}
         <b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
@@ -28,7 +28,7 @@
                 <i class="fa fa-user"></i> Profile</a>
         </li>
         <li>
-            <a href="#">
+            <a href="{% url "user:setting" %}">
                 <i class="fa fa-gear"></i> Settings</a>
         </li>
         <li class="divider"></li>

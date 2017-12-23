@@ -24,6 +24,8 @@ def register(request):
         else:
             return HttpResponseRedirect('/user/login')
     else:
+        if request.user.is_authenticated(): 
+            return HttpResponseRedirect('/user')
         return render(request, 'user/register.html')
 
 
@@ -46,3 +48,6 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return HttpResponseRedirect('/user/login')
+
+def setting(request):
+    return render(request, 'user/setting.html')

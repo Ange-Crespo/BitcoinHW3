@@ -22,7 +22,7 @@
 
 {% block status %}
 {{ block.super }}
-{% include "mainpage/status.html" %}
+{% include "mainpage/status.html" with user=request.user %}
 {% endblock %}
 
 {% block body %}
