@@ -6,4 +6,8 @@ from django.http import HttpResponseRedirect
 def index(request):
     if request.user.is_authenticated is False:
         return HttpResponseRedirect('/user/login')
+=======
+    #if request.user.is_authenticated() is False:
+    #    return HttpResponseRedirect('/user/login')
+>>>>>>> Stashed changes
     return render(request, 'mainpage/index.html')
