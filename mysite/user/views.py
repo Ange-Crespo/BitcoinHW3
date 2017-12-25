@@ -24,13 +24,13 @@ def register(request):
         else:
             return HttpResponseRedirect('/user/login')
     else:
-        if request.user.is_authenticated(): 
+        if request.user.is_authenticated: 
             return HttpResponseRedirect('/user')
         return render(request, 'user/register.html')
 
 
 def login(request):
-    if request.user.is_authenticated(): 
+    if request.user.is_authenticated: 
         return HttpResponseRedirect('/user')
 
     username = request.POST.get('username', '')
