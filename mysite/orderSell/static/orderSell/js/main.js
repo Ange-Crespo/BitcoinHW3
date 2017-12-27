@@ -1,10 +1,10 @@
-
+function updateSell(){
     $.ajax({
         type:"GET", 
         url:window.location.origin+"/orderSell/json/", 
         data: { get_param: 'value' }, 
         success: function(data) {
-            
+            deleteSell();
             feed(data);
         }, 
         error: function(jqXHR, textStatus, errorThrown) {
@@ -13,6 +13,9 @@
         },
         dataType:"json"
     });
+    function deleteSell(){
+        $('#result_Sell').empty();
+    };
     function feed(data){
         obj = data.asks;
        
@@ -22,3 +25,5 @@
             $('#result_Sell').append(line);
         }
     };
+};
+updateSell();

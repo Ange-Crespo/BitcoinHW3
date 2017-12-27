@@ -3,8 +3,8 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.http import HttpResponse
 from .forms import buyAndSellForm
-
 import os
+from channels import Group
 
 # Create your views here.
 def content(request):
@@ -50,11 +50,17 @@ def create_post(request):
         print(cmd)
         print(request.user.username)
         response_data = {}
+
+        #
         os.system("pwd && cd ../scripts && pwd && ./book "+cmd+" "+"test"+" "+price+" "+amount)
         os.system("pwd && cd ../scripts && pwd && ./book match")
         os.system("pwd && cd ../scripts && pwd && ./book history 0 -1 > ../json/history.json")
         os.system("pwd && cd ../scripts && pwd && ./book list > ../json/bid_ask.json")
-        ##UPDATE PRICE FOR THE CHART AND TICKER IN DB AND VIEW
+        
+        # Ask for the reload of Order tables / Chart / Tickers 
+        result = {}
+        result['text'] = 'Data Updated'
+        Group("update").send(result)
         return HttpResponse(
             json.dumps(response_data),
             content_type="application/json"

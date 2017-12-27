@@ -1,10 +1,10 @@
-
+function updateTrade(){
         $.ajax({
             type:"GET", 
             url:window.location.origin+"/orderTrade/json/", 
             data: { get_param: 'value' }, 
             success: function(data) {
-               
+                deleteTrade();
                 feed(data);
             }, 
             error: function(jqXHR, textStatus, errorThrown) {
@@ -12,6 +12,9 @@
             },
             dataType:"json"
         });
+        function deleteTrade(){
+            $('#result_Trade').empty();
+        };
         function feed(data){
             obj = data;
            
@@ -32,5 +35,7 @@
                 $('#result_Trade').append(line);
             }
         };
+    };
+updateTrade();
     
     

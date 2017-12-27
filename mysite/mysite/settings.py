@@ -12,6 +12,13 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "asgiref.inmemory.ChannelLayer",
+        "ROUTING": "updater.routing.channel_routing",
+    },
+}
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -149,5 +156,6 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'user', 'static'),
     os.path.join(BASE_DIR, 'landpage', 'static'),
     os.path.join(BASE_DIR, 'mainpage', 'static'),
+    os.path.join(BASE_DIR, 'updater', 'static'),
     os.path.join(BASE_DIR, 'mysite', 'static'),
 ]
