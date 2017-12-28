@@ -10,6 +10,11 @@
 
 <script>
     jQuery(function ($) {
+    
+        window.updateTicker = () => {
+            getData(refreshGird)
+        }
+
         const drawChart = (result) => {
             if (result.code === 200) {
                 $("#ticker-chart").shieldGrid({
@@ -42,7 +47,7 @@
         }
         const getData = (callback) => $.get("{% url "tickers:index" %}", callback)
 
-        setInterval(getData, 1000 * 60, refreshGird)
+        // setInterval(getData, 1000 * 60, refreshGird)
         getData(drawChart)
     })
 </script>

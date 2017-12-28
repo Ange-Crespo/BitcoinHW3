@@ -8,8 +8,8 @@ from functools import reduce
 def index(request):
     json_data = open('../json/history.json')
     data = json.load(json_data)
-    first_price = float(data[0].get('bidprice'))
-    price = float(data[-1].get('bidprice'))
+    first_price = float(data[-1].get('bidprice'))
+    price = float(data[0].get('bidprice'))
     volume = reduce((lambda x, y: x + float(y.get('amount'))), data, 0)
     change = float((price - first_price) / first_price)
     result = {
