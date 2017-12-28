@@ -41,12 +41,11 @@ INSTALLED_APPS = [
     'alert',
     'buyAndSell',
     'Chart',
-    'orderBuy',
-    'orderSell',
-    'orderTrade',
+    'orderAndTrade',
     'tickers',
     'landpage',
     'mainpage',
+    'redis',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -77,9 +76,7 @@ TEMPLATES = [
             os.path.join(BASE_DIR, 'alert', 'templates'),
             os.path.join(BASE_DIR, 'Chart', 'templates'),
             os.path.join(BASE_DIR, 'buyAndSell', 'templates'),
-            os.path.join(BASE_DIR, 'orderBuy', 'templates'),
-            os.path.join(BASE_DIR, 'orderSell', 'templates'),
-            os.path.join(BASE_DIR, 'orderTrade', 'templates'),
+            os.path.join(BASE_DIR, 'orderAndTrade', 'templates'),            
             os.path.join(BASE_DIR, 'tickers', 'templates'),
             os.path.join(BASE_DIR, 'titleCurrencie', 'templates'),
             os.path.join(BASE_DIR, 'landpage', 'templates'),
@@ -108,6 +105,17 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+
+# Redis setup
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
     }
 }
 
@@ -158,4 +166,5 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'mainpage', 'static'),
     os.path.join(BASE_DIR, 'updater', 'static'),
     os.path.join(BASE_DIR, 'mysite', 'static'),
+    os.path.join(BASE_DIR, 'orderAndTrade', 'static'),
 ]
