@@ -28,7 +28,9 @@ from channels import Group
     return HttpResponse(print(form.errors))'''
 
 def create_post(request):
+    
     if request.method == 'POST':
+
         Limit = request.POST.get('Limit')
         amount = request.POST.get('amount')
         price = request.POST.get('price')
@@ -38,7 +40,7 @@ def create_post(request):
         response_data = {}
 
         #
-        os.system("cd ../scripts && ./book "+cmd+" "+"test"+" "+price+" "+amount)
+        os.system("cd ../scripts && ./book "+cmd+" "+request.user.username+" "+price+" "+amount)
         os.system("cd ../scripts && ./book match")
         
         # Ask for the reload of Order tables / Chart / Tickers 
