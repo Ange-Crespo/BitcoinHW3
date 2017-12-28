@@ -46,6 +46,25 @@ $(document).ready(function(){
     });
 
 
+	// Tag Line
+	var $tagLine = $('#tag-line');
+	var currentIndex = 0
+	var listOfTagLines = [
+		'NTU Students',
+		'the best developers in Taiwan',
+		'the Hundi'
+	];
+	function setTagLine () {
+		$tagLine[0].style.webkitAnimation = 'none';
+    setTimeout(function() {
+		  $tagLine.text(listOfTagLines[currentIndex % listOfTagLines.length]);
+      $tagLine[0].style.webkitAnimation = '';
+    }, 100);
+		currentIndex += 1;
+	}
+	setInterval(setTagLine, 1000 * 3);
+	setTagLine();
+
 });
 
 

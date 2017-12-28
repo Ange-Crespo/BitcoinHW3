@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "user/base.html" %}
 
-<head>
-  <title></title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="css/style.css" rel="stylesheet">
-</head>
+{% block title %} Profile {% endblock %}
 
-<body>
-  <a href="/">Go to Dashboard</a>
-</body>
-
-</html>
+{% block body %}
+{{ block.super }}
+{% include "user/withdraw.html" %}
+{% include "user/deposit.html" %}
+<a href="/">Go to Dashboard</a>
+{% endblock %}
