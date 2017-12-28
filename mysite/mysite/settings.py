@@ -32,7 +32,7 @@ SECRET_KEY = '2h18*684$xn05ksfy3crgv*lj+hl916e7u!ol!bv*nk@z(a^i&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["bithundi.com","www.bithundi.com","localhost"]
+ALLOWED_HOSTS = ["bithundi.com","www.bithundi.com","localhost","127.0.0.1"]
 
 # Application definition
 
