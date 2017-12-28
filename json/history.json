@@ -4,20 +4,31 @@
     "bidprice":"1.00",
     "asker":"test",
     "askprice":"1.00",
-    "amount":"1.00"
+    "amount":"0.00",
+    "timestamp":"1514432553"
   },
   {
     "bidder":"test",
     "bidprice":"1.00",
     "asker":"test",
     "askprice":"1.00",
-    "amount":"1.00"
+    "amount":"0.00",
+    "timestamp":"1514427311"
   },
   {
     "bidder":"test",
-    "bidprice":"1.00",
+    "bidprice":"12.00",
     "asker":"test",
-    "askprice":"1.00",
-    "amount":"1.00"
+    "askprice":"5.00",
+    "amount":"12.00",
+    "timestamp":"1514426630"
+  },
+  {
+    "bidder":"test",
+    "bidprice":"12.00",
+    "asker":"test",
+    "askprice":"2.00",
+    "amount":"3.00",
+    "timestamp":"1514426613"
   }
 ]
