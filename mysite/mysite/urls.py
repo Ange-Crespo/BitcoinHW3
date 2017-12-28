@@ -20,7 +20,7 @@ urlpatterns = [
     url(r'^mainpage/',include('mainpage.urls')),
     url(r'^alert/',include('alert.urls')),
     url(r'^buyAndSell/',include('buyAndSell.urls')),
-    url(r'^Chart/',include('Chart.urls')),
+    url(r'^chart/',include('chart.urls')),
     url(r'^orderSell/',include('orderSell.urls')),
     url(r'^orderBuy/',include('orderBuy.urls')),
     url(r'^orderTrade/',include('orderTrade.urls')),

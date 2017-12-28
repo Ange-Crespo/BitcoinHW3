@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class ChartConfig(AppConfig):
-    name = 'Chart'
+    name = 'chart'
