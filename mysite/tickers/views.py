@@ -2,12 +2,12 @@ import json
 from django.http import HttpResponse
 from django.shortcuts import render
 from functools import reduce
+from orderAndTrade.views import get_history
 
 # Create your views here.
 
 def index(request):
-    json_data = open('../json/history.json')
-    data = json.load(json_data)
+    data = get_history()
     first_price = float(data[-1].get('bidprice'))
     price = float(data[0].get('bidprice'))
     volume = reduce((lambda x, y: x + float(y.get('amount'))), data, 0)

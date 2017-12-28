@@ -1,12 +1,12 @@
 import json
 from django.http import HttpResponse
 from django.shortcuts import render
+from orderAndTrade.views import get_history
 
 # Create your views here.
 
 def index(request):
-    json_data = open('../json/history.json')
-    data = json.load(json_data)
+    data = get_history()
     result = {
         'code': 200,
         'data': data
