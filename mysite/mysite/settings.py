@@ -40,8 +40,8 @@ INSTALLED_APPS = [
     'user',
     'alert',
     'buyAndSell',
-    'Chart',
     'orderAndTrade',
+    'chart',
     'tickers',
     'landpage',
     'mainpage',
@@ -74,7 +74,7 @@ TEMPLATES = [
         'DIRS': [
             os.path.join(BASE_DIR, 'user', 'templates'),
             os.path.join(BASE_DIR, 'alert', 'templates'),
-            os.path.join(BASE_DIR, 'Chart', 'templates'),
+            os.path.join(BASE_DIR, 'chart', 'templates'),
             os.path.join(BASE_DIR, 'buyAndSell', 'templates'),
             os.path.join(BASE_DIR, 'orderAndTrade', 'templates'),            
             os.path.join(BASE_DIR, 'tickers', 'templates'),

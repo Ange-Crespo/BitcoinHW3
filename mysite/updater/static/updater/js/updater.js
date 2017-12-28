@@ -8,4 +8,6 @@ socket.onmessage = function(e) {
         updateBuy(); //define in orderBuy
         updateSell(); //define in orderSell
         updateTrade(); //define in orderTrade
+        updateTicker(); // define in tickers
+        updateChart();  // define in chart
     }
