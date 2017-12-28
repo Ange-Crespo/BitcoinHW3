@@ -1,6 +1,14 @@
 [
   {
     "bidder":"test",
+    "bidprice":"7.00",
+    "asker":"test",
+    "askprice":"4.00",
+    "amount":"0.00",
+    "timestamp":"1514442184"
+  },
+  {
+    "bidder":"test",
     "bidprice":"1.00",
     "asker":"test",
     "askprice":"1.00",

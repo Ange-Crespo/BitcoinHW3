@@ -1,38 +1,29 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-import json
+import json as JSON
+import subprocess
 # Create your views here.
 
 def takeJSON_bid_ask(request):
     #feed content put in json and add it in context
-    json_data = open('../json/bid_ask.json')
-    data1 = json.load(json_data)
-
-    ##Example of return with context##
-    #context = {
-    #    'coin_symbol': coin_symbol2,
-    #    'latest_currency_list': latest_currency_list,
-    #} 
-    #return render(request, 'currencies/coin.html', context)
-    #######################################################################
+    json_data =subprocess.check_output(["./book","list"],cwd="../scripts")
+    #print(json_data.decode('utf-8'))
+    json_data=json_data.decode('utf-8')
+    #print(json_data)
+    data1 = JSON.loads(json_data)
     return HttpResponse(
-            json.dumps(data1),
+            JSON.dumps(data1),
             content_type="application/json")
         
 
 def takeJSON_history(request):
     #feed content put in json and add it in context
-    json_data = open('../json/history.json')
-    data1 = json.load(json_data)
+    json_data = subprocess.check_output(["./book","history", "0", "-1"],cwd="../scripts")
+    json_data=json_data.decode('utf-8')
+    print(json_data)
+    data1 = JSON.loads(json_data)
 
-    ##Example of return with context##
-    #context = {
-    #    'coin_symbol': coin_symbol2,
-    #    'latest_currency_list': latest_currency_list,
-    #} 
-    #return render(request, 'currencies/coin.html', context)
-    #######################################################################
     return HttpResponse(
-            json.dumps(data1),
+            JSON.dumps(data1),
             content_type="application/json"
         )

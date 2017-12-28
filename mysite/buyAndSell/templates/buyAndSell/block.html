@@ -1,7 +1,8 @@
 {% load static %}
 <div class="panel panel-primary">
         <div class="panel-heading">
-            <i class="fa fa fa-balance-scale"> Buy Or Sell</i>
+            <h3 class="panel-title">
+            <i class="fa fa fa-balance-scale"></i> Buy Or Sell</h3>
             <div class="pull-right">
                 <div class="btn-group">
                     <button type="button" style="display:none" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
@@ -38,35 +39,34 @@
                         </div>	
                     </div>
                     <div class="col-xs-6" style ="border : 0px;">
-                                    <label>
-                                        <input id="isOCO" type="checkbox">
-                                            <small>OCO</small>
-                                    </label>
-                                    <label>
-                                        <input id="isPostOnly" type="checkbox">
-                                            <small>Post only</small>
-                                    </label>
+                        <label>
+                            <input id="isOCO" type="checkbox">
+                                <small>OCO</small>
+                        </label>
+                        <label>
+                            <input id="isPostOnly" type="checkbox">
+                                <small>Post only</small>
+                        </label>
                                 
-                                    <label>
-                                        <input id="isHidden" type="checkbox">
-                                            <small>Hidden</small>
-                                    </label>	
+                        <label>
+                            <input id="isHidden" type="checkbox">
+                                <small>Hidden</small>
+                        </label>	
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-xs-6">
                         <div class="form-group">
                             <label><small>Price Base</small></label>
-                            <input step ="0.01" id="price" type="number" name="Price" class="input-sm form-control">
+                            <input step ="0.01" min="0" id="price" type="number" name="Price" class="input-sm form-control">
                             <!--<p class="help-block">Example block-level help text here.</p-->
                         </div>
                     </div>
                     <div class="col-xs-6">
-                        <div class="form-group">
-                                
-                                    <label><small>Amount</small></label>
-                                    <input  step ="0.01" id="amount" type="number" name="Amount" class=" input-sm form-control">
-                                    <!--<p class="help-block">Example block-level help text here.</p-->
+                        <div class="form-group">        
+                            <label><small>Amount</small></label>
+                            <input  step ="0.01" min="0" id="amount" type="number" name="Amount" class=" input-sm form-control">
+                            <!--<p class="help-block">Example block-level help text here.</p-->
                         </div>	
                     </div>
                 </div>

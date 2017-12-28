@@ -7,20 +7,6 @@ import os
 from channels import Group
 
 # Create your views here.
-def content(request):
-    #feed content put in json and add it in context
-    
-    ##Example of return with context##
-    #context = {
-    #    'coin_symbol': coin_symbol2,
-    #    'latest_currency_list': latest_currency_list,
-    #} 
-    #return render(request, 'currencies/coin.html', context)
-    #######################################################################
-
-    
-    return render(request, 'buyAndSell/content.html')
-
 
 '''def form(request) :
 
@@ -52,15 +38,15 @@ def create_post(request):
         response_data = {}
 
         #
-        os.system("pwd && cd ../scripts && pwd && ./book "+cmd+" "+"test"+" "+price+" "+amount)
-        os.system("pwd && cd ../scripts && pwd && ./book match")
-        os.system("pwd && cd ../scripts && pwd && ./book history 0 -1 > ../json/history.json")
-        os.system("pwd && cd ../scripts && pwd && ./book list > ../json/bid_ask.json")
+        os.system("cd ../scripts && ./book "+cmd+" "+"test"+" "+price+" "+amount)
+        os.system("cd ../scripts && ./book match")
         
         # Ask for the reload of Order tables / Chart / Tickers 
         result = {}
         result['text'] = 'Data Updated'
         Group("update").send(result)
+
+        #We will ask the data in redis in orderAndTrade
         return HttpResponse(
             json.dumps(response_data),
             content_type="application/json"
