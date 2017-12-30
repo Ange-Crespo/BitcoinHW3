@@ -1,32 +1,45 @@
 <div class="dropdown">
     <h1 class="dropdown-toggle" data-toggle="dropdown">
-    {% block titleCurrencieSymbol %}{% endblock %}/{% block titleCurrencieBaseSymbol %}${% endblock %}
-        <small>Price of {% block titleCurrencieName %}{% endblock %} in {% block titleCurrencieBaseName%}{% endblock %}</small>
+         <!--<i id ="currency"></i> / <i id = "base_currency"></i>--> 
+        <small> Currency</small>
+    <!--{% block titleCurrencieSymbol %}{% endblock %}/{% block titleCurrencieBaseSymbol %}${% endblock %}
+        <small> Price of {% block titleCurrencieName %}{% endblock %} in {% block titleCurrencieBaseName%}{% endblock %}</small> -->
+
         <b class="caret"></b>
     </h1>
     <ul class="dropdown-menu">
         <li class="dropdown-header">Crypto-currencies</li>
         <li>
-            <a href="#">
-                <i class="fa fa-user"></i> Bitcoin</a>
+            <a href="#currency" onclick="changeCurrencyTitle('BTC')">
+                <i class="fa fa-btc"></i> Bitcoin</a> 
         </li>
         <li>
-            <a href="#">
-                <i class="fa fa-gear"></i> ETH</a>
+            <a href="#currency" onclick="changeCurrencyTitle('ETH')">
+                 <i class="fa fa-btc"></i> ETH</a> 
         </li>
         <li class="divider"></li>
         <li class="dropdown-header">Compare with</li>
         <li>
-            <a href="#">
-                <i class="fa fa-power-off"></i> USD</a>
+            <a href="#base_currency" onclick="changeBaseCurrencyTitle('USD')">
+                <i class="fa fa-usd"></i> USD</a> 
         </li>
         <li>
-            <a href="#">
-                <i class="fa fa-power-off"></i> BTC</a>
+            <a href="#base_currency" onclick="changeBaseCurrencyTitle('BTC')">
+                <i class="fa fa-btc"></i> BTC</a> 
         </li>
         <li>
-            <a href="#">
-                <i class="fa fa-power-off"></i> ETH</a>
+            <a href="#base_currency" onclick="changeBaseCurrencyTitle('ETH')">
+                <i class="fa fa-btc"></i> ETH</a> 
         </li>
     </ul>
 </div>
+
+
+<script>
+function changeCurrencyTitle(id){
+     document.getElementById("currency").innerHTML = id;
+}
+function changeBaseCurrencyTitle(id){
+     document.getElementById("base_currency").innerHTML = id;
+}
+</script>
