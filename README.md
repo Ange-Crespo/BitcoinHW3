@@ -1,2 +1,5 @@
-# BitcoinHW3
-Homework 3 for Bitcoin Class in NTU 
+# Bithundi
+The new age DAPP
+
+This is the repository for Group-3,
+Please make your code supper supper modular to make easy in the end debuging and integration
