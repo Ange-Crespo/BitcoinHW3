@@ -13,4 +13,6 @@ urlpatterns = [
     url(r'^login/$', views.login, name='login'),
     url(r'^logout/$', views.logout, name='logout'),
     url(r'^setting/$', views.setting, name='setting'),
+    url(r'^deposit/$', views.deposit, name='deposit'),
+    url(r'^withdraw/$', views.withdraw, name='withdraw'),
 ]

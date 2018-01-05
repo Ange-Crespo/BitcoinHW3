@@ -1,12 +1,18 @@
 from django.shortcuts import render
 
+from datetime import datetime  
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.http import HttpResponse, HttpResponseRedirect
+
+from mainpage.models import Account
 # Create your views here.
 
 def index(request):
-    return render(request, 'user/index.html')
+    if request.user.is_authenticated: 
+        account = Account.objects.get(user_id=request.user)
+        return render(request, 'user/index.html', { 'balance': account.total_buy_sell_deposit_withdraw })
+    return HttpResponseRedirect('/user/login')
 
 
 def register(request):
@@ -18,6 +24,8 @@ def register(request):
         user.email = email
         user.save()
         user = auth.authenticate(username=username, password=password)
+        account = Account.objects.create(user_id=user, creation_location="Taipei", last_password_modified_time=datetime.now(), last_login_ip="127.0.0.1", last_login_ip_location="Taipei", total_buy_sell_deposit_withdraw=0, phone_number="0912345678", national_id_proof="fake", first_name=username, last_name="Bithundi")
+        account.save()
         if user is not None and user.is_active:
             auth.login(request, user)
             return HttpResponseRedirect('/user')
@@ -51,3 +59,15 @@ def logout(request):
 
 def setting(request):
     return render(request, 'user/setting.html')
+
+def withdraw(request):
+    account = Account.objects.get(user_id=request.user)
+    account.total_buy_sell_deposit_withdraw -= int(request.POST.get("amount"))
+    account.save()
+    return HttpResponseRedirect('/user')
+
+def deposit(request):
+    account = Account.objects.get(user_id=request.user)
+    account.total_buy_sell_deposit_withdraw += int(request.POST.get("amount"))
+    account.save()
+    return HttpResponseRedirect('/user')

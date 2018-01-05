@@ -4,6 +4,7 @@
 
 {% block body %}
 {{ block.super }}
+<h1>Current Account Balance: {{balance}}</h1>
 {% include "user/withdraw.html" %}
 {% include "user/deposit.html" %}
 <a href="/">Go to Dashboard</a>

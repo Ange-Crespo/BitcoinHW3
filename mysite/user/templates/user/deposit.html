@@ -1,14 +1,14 @@
-<form action="{% url "user:register" %}" method="POST">
+<form action="{% url "user:deposit" %}" method="POST">
     {% csrf_token %}
     <div class="row text-center">
         <h2>Deposit</h2>
     </div>
     <div class="row">
-        <label for="address" class="col-md-2">
-            Address:
+        <label for="amount" class="col-md-2">
+            Amount:
         </label>
         <div class="col-md-9">
-            <input type="text" class="form-control" id="address" name="address" placeholder="Address" required>
+            <input type="text" class="form-control" id="amount" name="amount" placeholder="Amount of USD" required>
         </div>
         <div class="col-md-1">
             <i class="fa fa-lock fa-2x"></i>

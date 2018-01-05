@@ -20,7 +20,7 @@ class Account(models.Model):
     last_password_modified_time = models.DateTimeField()
     last_login_ip = models.CharField(max_length = 255)
     last_login_ip_location = models.CharField(max_length = 255)
-    total_buy_sell_deposit_withdraw = models.CharField(max_length = 255)
+    total_buy_sell_deposit_withdraw = models.IntegerField()
     phone_number = models.CharField(max_length = 255)
     national_id_proof = models.CharField(max_length = 255)
     first_name = models.CharField(max_length = 255)
