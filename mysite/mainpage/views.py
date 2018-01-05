@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 # Create your views here.
 
 def index(request):
-    if request.user.is_authenticated is False:
-        return HttpResponseRedirect('/user/login')
-    return render(request, 'mainpage/index.html')
+    print(request.user.is_authenticated)
+    if request.user.is_authenticated:
+      return render(request, 'mainpage/index.html')
+    return HttpResponseRedirect('/user/login')
